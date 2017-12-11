@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Genesis.Logging" Version="1.0.7-alpha" />
+    <PackageReference Include="Genesis.Ensure" Version="1.0.5" />
+    <PackageReference Include="ReactiveUI" Version="7.4.0" />
+  </ItemGroup>
+</Project>

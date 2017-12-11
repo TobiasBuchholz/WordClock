@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reactive:ReactiveContentPage 
+    x:TypeArguments="local:ViewModels.IMainViewModel" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="WordClock.UI.Views.MainPage" 
+    xmlns:vm="clr-namespace:WordClock.UI.ViewModels"
+    xmlns:controls="clr-namespace:WordClock.UI.Controls"
+    xmlns:local="clr-namespace:WordClock.UI;assembly=WordClock.UI"
+    xmlns:reactive="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+    Title="WordClock"
+    BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <Grid 
+        x:Name="Grid"
+        RowSpacing="16" 
+        Padding="0,0,0,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" x:Name="NightModePickerRow" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.1*" />
+            <ColumnDefinition Width="0.6*" />
+        </Grid.ColumnDefinitions>
+        <Label 
+            x:Name="ConnectionStateLabel"
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="3" 
+            Margin="16"
+            HorizontalTextAlignment="Center"
+            FontSize="24"
+            TextColor="White"/>
+        <ActivityIndicator 
+            x:Name="ProgressIndicator"
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="3" 
+            HeightRequest="50"
+            WidthRequest="50"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="White"
+            IsRunning="true"
+        />
+        <Label 
+            x:Name="RedPrefixLabel"
+            Grid.Row="1" 
+            Grid.Column="0" 
+            VerticalTextAlignment="Center" 
+            Margin="16,0,0,0"
+            Text="Red:"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Label 
+            x:Name="RedLabel"
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"
+            TextColor="White"
+            FontSize="Medium"
+            />
+        <Slider 
+            x:Name="RedSlider"
+            Grid.Row="1" 
+            Grid.Column="2"
+            Minimum="0"
+            Maximum="255"
+            Margin="0,0,16,0"
+            />
+        <Label 
+            x:Name="GreenPrefixLabel"
+            Grid.Row="2" 
+            Grid.Column="0" 
+            VerticalTextAlignment="Center" 
+            Margin="16,0,0,0"
+            Text="Green:"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Label 
+            x:Name="GreenLabel"
+            Grid.Row="2" 
+            Grid.Column="1" 
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Slider 
+            x:Name="GreenSlider"
+            Grid.Row="2" 
+            Grid.Column="2" 
+            Minimum="0"
+            Maximum="255"
+            Margin="0,0,16,0"/>
+        <Label 
+            x:Name="BluePrefixLabel"
+            Grid.Row="3" 
+            Grid.Column="0" 
+            VerticalTextAlignment="Center" 
+            Margin="16,0,0,0"
+            Text="Blue:"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Label 
+            x:Name="BlueLabel"
+            Grid.Row="3" 
+            Grid.Column="1" 
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Slider 
+            x:Name="BlueSlider"
+            Grid.Row="3" 
+            Grid.Column="2" 
+            Minimum="0"
+            Maximum="255"
+            Margin="0,0,16,0"
+            />
+        <Label 
+            x:Name="BrightnessPrefixLabel"
+            Grid.Row="4" 
+            Grid.Column="0" 
+            VerticalTextAlignment="Center" 
+            Margin="16,0,0,0"
+            Text="Brightness:"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Label 
+            x:Name="BrightnessLabel"
+            Grid.Row="4" 
+            Grid.Column="1" 
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"
+            TextColor="White"
+            FontSize="Medium"/>
+        <Slider 
+            x:Name="BrightnessSlider"
+            Grid.Row="4" 
+            Grid.Column="2" 
+            Minimum="0"
+            Maximum="255"
+            Margin="0,0,16,0"/>
+
+        <StackLayout
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal"
+            Padding="16,16,16,0">
+            <Label
+                x:Name="NightModeSwitchLabel"
+                HorizontalOptions="FillAndExpand"
+                TextColor="White"
+                Text="Nightmode enabled:"
+                />
+            <Switch x:Name="NightModeSwitch"/>
+        </StackLayout>
+        <StackLayout
+            x:Name="NightModePickerLayout"
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal"
+            Padding="16,8,16,8"
+            Spacing="16"
+            BackgroundColor="#424242"
+            >
+            <controls:MaterialPicker
+                x:Name="NightModeBrightnessPicker"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Brightness"
+                PlaceholderColor="Silver"
+            />
+            <controls:MaterialTimePicker
+                x:Name="NightModeFromTimePicker"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="From Time"
+                PlaceholderColor="Silver"
+            />
+            <controls:MaterialTimePicker
+                x:Name="NightModeToTimePicker"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="To Time"
+                PlaceholderColor="Silver"
+            />    
+        </StackLayout>
+    </Grid>
+</reactive:ReactiveContentPage>
