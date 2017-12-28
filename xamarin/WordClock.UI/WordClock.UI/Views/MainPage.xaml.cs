@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -14,8 +13,6 @@ namespace WordClock.UI.Views
 {
     public partial class MainPage : ReactiveContentPage<IMainViewModel>
     {
-        private double _initialNightModePickerRowHeight = -1; 
-        
         public MainPage()
         {
             InitializeComponent();
@@ -98,21 +95,26 @@ namespace WordClock.UI.Views
                     .DisposeWith(disposables);
 
                 this.WhenAnyValue(x => x.ViewModel.IsNightModeEnabled)
-                    .Do(_ => HandleInitInitialNightModePickerRowHeight())
-                    .Where(_ => _initialNightModePickerRowHeight > 0)
+                    .CombineLatest(GetInitialNightModePickerRowHeight(), Tuple.Create)
+                    .ObserveOn(RxApp.MainThreadScheduler)
                     .Do(AnimateNightModePickerLayout)
+                    .Select(x => x.Item1)
                     .BindTo(this, x => x.NightModeSwitch.IsToggled)
                     .DisposeWith(disposables);
 
                 this.WhenAnyValue(x => x.ViewModel.NightModeBrightness)
+                    .ObserveOn(RxApp.MainThreadScheduler)
+                    .Debug(x => x.ToString())
                     .BindTo(this, x => x.NightModeBrightnessPicker.SelectedIndex)
                     .DisposeWith(disposables);
 
                 this.WhenAnyValue(x => x.ViewModel.NightModeFromTime)
+                    .ObserveOn(RxApp.MainThreadScheduler)
                     .SubscribeSafe(x => NightModeFromTimePicker.GetUnderlyingPicker().Time = x)
                     .DisposeWith(disposables);
 
                 this.WhenAnyValue(x => x.ViewModel.NightModeToTime)
+                    .ObserveOn(RxApp.MainThreadScheduler)
                     .SubscribeSafe(x => NightModeToTimePicker.GetUnderlyingPicker().Time = x)
                     .DisposeWith(disposables);
 
@@ -201,20 +203,24 @@ namespace WordClock.UI.Views
             NightModeToTimePicker.Opacity = opacity;
         }
 
-        private void HandleInitInitialNightModePickerRowHeight()
+        private IObservable<double> GetInitialNightModePickerRowHeight()
         {
-            if(_initialNightModePickerRowHeight < 0 && NightModePickerLayout.Height > 1) {
-                _initialNightModePickerRowHeight = NightModePickerLayout.Height;
-            }
+            return Observable
+                .FromEventPattern(NightModePickerLayout, nameof(NightModePickerLayout.LayoutChanged))
+                .Take(1)
+                .Select(_ => NightModePickerLayout.Height);
         }
-        
-        private void AnimateNightModePickerLayout(bool animateIn)
+
+        private void AnimateNightModePickerLayout(Tuple<bool, double> tuple)
         {
+            var animateIn = tuple.Item1;
+            var initialNightModePickerRowHeight = tuple.Item2;
+
             if(animateIn) {
-                AnimateNightModePickerRowHeight(NightModePickerRow.Height.Value, _initialNightModePickerRowHeight);
+                AnimateNightModePickerRowHeight(NightModePickerRow.Height.Value, initialNightModePickerRowHeight);
                 NightModePickerLayout.FadeTo(1, 500);
             } else {
-                AnimateNightModePickerRowHeight(_initialNightModePickerRowHeight, 0);
+                AnimateNightModePickerRowHeight(initialNightModePickerRowHeight, 0);
                 NightModePickerLayout.FadeTo(0, 500);
             }
         }
