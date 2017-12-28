@@ -104,7 +104,6 @@ namespace WordClock.UI.Views
 
                 this.WhenAnyValue(x => x.ViewModel.NightModeBrightness)
                     .ObserveOn(RxApp.MainThreadScheduler)
-                    .Debug(x => x.ToString())
                     .BindTo(this, x => x.NightModeBrightnessPicker.SelectedIndex)
                     .DisposeWith(disposables);
 

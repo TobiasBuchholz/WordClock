@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>WordClock.UI</string>
+	<string>WordClock</string>
 	<key>CFBundleName</key>
-	<string>WordClock.UI</string>
+	<string>WordClock</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tobishiba.WordClock-UI</string>
 	<key>CFBundleShortVersionString</key>
