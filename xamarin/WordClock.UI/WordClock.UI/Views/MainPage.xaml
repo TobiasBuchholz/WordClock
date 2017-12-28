@@ -181,6 +181,7 @@
                 HorizontalOptions="FillAndExpand"
                 Placeholder="Brightness"
                 PlaceholderColor="Silver"
+                SelectedIndex="-1"
             />
             <controls:MaterialTimePicker
                 x:Name="NightModeFromTimePicker"
