@@ -4,6 +4,7 @@
 #include <WiFiUdp.h>
 #include <RTClib.h>
 #include <Adafruit_NeoPixel.h>
+#include <EEPROM.h>
 
 #define PIN 5
 #define NUMPIXELS 110
@@ -22,7 +23,8 @@ unsigned long previousMillisPixels = 0;
 bool isConnectedToSocket = false;
 
 void setup() {
-  Serial.begin(115200);  
+  Serial.begin(115200);
+  loadUserPrefs();
   connectToWifi();
   setupTimeDisplay();
   setupNTP();
@@ -33,7 +35,7 @@ void loop() {
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= 10000) {
     previousMillis = currentMillis;
-    fetchTimeFromNTP(); 
+    fetchTimeFromNTP();
     displayTimeSentence();
   }
 
@@ -41,6 +43,6 @@ void loop() {
     previousMillisPixels = currentMillis;
     displayTimeSentence();
   }
-  
-  loopSocket();  
+
+  loopSocket();
 }
