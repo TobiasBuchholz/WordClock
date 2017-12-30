@@ -40,5 +40,4 @@ The following libraries are beeing used:
 - Akavache: https://github.com/akavache/Akavache
 
 ### Demo
-![Demo](https://j.gifs.com/0VAnq7.gif)
-[Youtube](https://www.youtube.com/watch?v=xTer7YWEIt0)
+[![Demo](https://github.com/TobiasBuchholz/WordClock/raw/master/demo/demo.gif)](https://www.youtube.com/watch?v=xTer7YWEIt0)
