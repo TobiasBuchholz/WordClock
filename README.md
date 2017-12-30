@@ -40,4 +40,5 @@ The following libraries are beeing used:
 - Akavache: https://github.com/akavache/Akavache
 
 ### Demo
-[![Alt Text](https://j.gifs.com/0VAnq7.gif)](https://www.youtube.com/watch?v=xTer7YWEIt0)
+![Demo](https://j.gifs.com/0VAnq7.gif)
+[Youtube](https://www.youtube.com/watch?v=xTer7YWEIt0)
