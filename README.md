@@ -15,9 +15,15 @@ Code for a simple DIY-version of the famous Word Clock based on a NodeMCU ESP826
 - [23 x 23 adhesive film with plotted letters](https://github.com/TobiasBuchholz/WordClock/blob/master/design/letters_front.pdf)
 - micro USB cable + power supply
 
-<img src="design/letters.jpg" width="75%">
-<img src="design/leds.jpg" width="75%">
-<img src="design/back.jpg" width="75%">
+<img src="design/letters.jpg" width="75%"><br>
+Be very carefull when putting the adhesive film on the frosted acrylic to prevent air bubbles.
+
+<img src="design/leds.jpg" width="75%"><br>
+The LED strip needs to be cut and rearranged in a zig-zag pattern and reconnected with jumper cables.
+I've also put a piece of cardboard with holes on top of the LEDs so the light from one LED will be directed towards a single letter, and not spread to adjacent ones.
+
+<img src="design/back.jpg" width="75%"><br>
+I've also added a battery holder as power supply but it turns out on longer usage they are getting too weak too fast. So as far as you don't want to change the batteries every day the micro usb cable as power supply is the better way to go.
 
 ### Breadboard:
 
