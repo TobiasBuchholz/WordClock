@@ -3,7 +3,7 @@
 Code for a simple DIY-version of the famous Word Clock based on a NodeMCU ESP8266 development board and Adafruit NeoPixels LED strip.
 <br>
 <br>
-![alt text](design/clock.jpg "Breadboard")
+<img src="design/clock.jpg" width="75%">
 
 ### Components
 - [NodeMCU ESP8266](https://www.amazon.de/gp/product/B074Q2WM1Y/ref=oh_aui_detailpage_o04_s00?ie=UTF8&psc=1)
@@ -15,9 +15,9 @@ Code for a simple DIY-version of the famous Word Clock based on a NodeMCU ESP826
 - [23 x 23 adhesive film with plotted letters](https://github.com/TobiasBuchholz/WordClock/blob/master/design/letters_front.pdf)
 - micro USB cable + power supply
 
-![](design/letters.jpg "Letters")
-![](design/leds.jpg "LEDs")
-![](design/back.jpg "Back")
+<img src="design/letters.jpg" width="75%">
+<img src="design/leds.jpg" width="75%">
+<img src="design/back.jpg" width="75%">
 
 ### Breadboard:
 
