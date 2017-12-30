@@ -15,9 +15,13 @@ Code for a simple DIY-version of the famous Word Clock based on a NodeMCU ESP826
 - [23 x 23 adhesive film with plotted letters](https://github.com/TobiasBuchholz/WordClock/blob/master/design/letters_front.pdf)
 - micro USB cable + power supply
 
+![](design/letters.jpg "Letters")
+![](design/leds.jpg "LEDs")
+![](design/back.jpg "Back")
+
 ### Breadboard:
 
-![alt text](design/breadboard.png "Breadboard")
+![](design/breadboard.png "Breadboard")
 See [Adafruit guide](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels) for more information.
 
 ### NodeMCU code
