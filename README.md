@@ -40,4 +40,4 @@ The following libraries are beeing used:
 - Akavache: https://github.com/akavache/Akavache
 
 ### Demo
-![Demo](https://j.gifs.com/0VAnq7.gif)](https://www.youtube.com/watch?v=xTer7YWEIt0)
+[![Demo](http://j.gifs.com/0VAnq7.gif)](https://www.youtube.com/watch?v=xTer7YWEIt0)
