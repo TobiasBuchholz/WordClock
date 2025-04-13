@@ -70,16 +70,22 @@ namespace WordClock.UI.ViewModels
                 .GetHostEntry(Dns.GetHostName())
                 .AddressList
                 .AsEnumerable()
-                .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork)?
+                .FirstOrDefault(GetIpAddressFilter)?
                 .ToString();
 
-            if(string.IsNullOrEmpty(ip)) {
+            if (string.IsNullOrEmpty(ip)) {
                 throw new IOException("Could't get Wifis IP address");
             } else {
                 return ip?.Substring(0, ip.LastIndexOf(".", StringComparison.CurrentCulture));
             }
         }
-        
+
+        private static bool GetIpAddressFilter(IPAddress ipAddress)
+        {
+            return ipAddress.AddressFamily == AddressFamily.InterNetwork && 
+                   ipAddress.ToString().StartsWith("192", StringComparison.CurrentCulture);
+        }
+
         private void InitColorProperties()
         {
             BlobCache
